@@ -1,3 +1,4 @@
+//32571
 import ru.ifmo.se.pokemon.*;
 
 public class Main {

@@ -5,6 +5,6 @@ public class Komala extends Pokemon {
         super(name, level);
         setStats(65, 115, 65, 75, 95, 65);
         setType(Type.NORMAL);
-        setMove(new Bulldoze(),new TakeDown());
+        setMove(new Bulldoze(),new TakeDown(), new PowerGem(), new ConfuseRay());
     }
 }
