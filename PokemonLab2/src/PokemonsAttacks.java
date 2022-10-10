@@ -13,7 +13,7 @@ class Bulldoze extends PhysicalMove {
 
     @Override
     protected String describe() {
-        return "Использует bulldoze - наносит урон и снижает скорость врага на 1 ход";
+        return "Использует Bulldoze - наносит урон и снижает скорость врага на 1 ход";
     }
 }
 
@@ -62,7 +62,7 @@ class ConfuseRay extends StatusMove {
 
 class DoubleTeam extends StatusMove {
     public DoubleTeam() {
-        super(Type.NORMAL, 0, 0);
+        super(Type.NORMAL, 0, 100);
     }
 
     @Override
@@ -73,6 +73,119 @@ class DoubleTeam extends StatusMove {
     @Override
     protected String describe() {
         return "Использует Double Team - увеличивает свое уклонение на 1 ход";
+    }
+}
+
+class RazorLeaf extends PhysicalMove {
+    public RazorLeaf() {
+        super(Type.GRASS, 55, 95);
+    }
+
+    @Override
+    protected void applySelfEffects(Pokemon pokemon) {
+        pokemon.setCondition(new Effect().stat(Stat.ATTACK, 3).turns(1));
+    }
+
+
+    @Override
+    protected String describe() {
+        return "Использует Razor Leaf - наносит критический урон";
+    }
+}
+
+class PlayNice extends StatusMove {
+    public PlayNice() {
+        super(Type.NORMAL, 0, 100);
+    }
+
+    @Override
+    protected void applyOppEffects(Pokemon pokemon) {
+        pokemon.addEffect(new Effect().turns(1).stat(Stat.ATTACK, -1));
+    }
+
+    @Override
+    protected String describe() {
+        return "Использует Play nice - снижает врагу силу аттаки на один ход";
+    }
+}
+
+class Confide extends StatusMove {
+    public Confide() {
+        super(Type.NORMAL, 0, 100);
+    }
+
+    @Override
+    protected void applyOppEffects(Pokemon pokemon) {
+        pokemon.setCondition(new Effect().turns(1).stat(Stat.SPECIAL_ATTACK, -3));
+    }
+
+    @Override
+    protected String describe() {
+        return "Использует Confide - снижает специальную атаку на один ход";
+    }
+}
+
+class DarkPulse extends SpecialMove {
+    public DarkPulse() {
+        super(Type.DARK, 80, 100);
+    }
+
+    @Override
+    protected void applyOppEffects(Pokemon pokemon) {
+        if (Math.random() <= 0.2) {
+            Effect.flinch(pokemon);
+        }
+    }
+
+    @Override
+    protected String describe() {
+        return "Использует Dark Pulse - наносит урон и с шансом 20% вызывает страх у соперника";
+    }
+}
+
+class ShadowBall extends SpecialMove {
+    public ShadowBall() {
+        super(Type.GHOST, 80, 100);
+    }
+
+    @Override
+    protected void applyOppEffects(Pokemon pokemon) {
+        if (Math.random() <= 0.2) {
+            pokemon.setCondition(new Effect().turns(1).stat(Stat.SPECIAL_DEFENSE, -1));
+        }
+    }
+
+    @Override
+    protected String describe() {
+        return "Использует Shadow Ball - наносит урон и уменьшает специальную защиту врага на один ход";
+    }
+}
+
+class FourPlay extends PhysicalMove {
+    public FourPlay() {
+        super(Type.DARK,95, 100);
+    }
+
+    @Override
+    protected void applyOppDamage(Pokemon pokemon, double v) {
+        pokemon.setMod(Stat.HP, (int)pokemon.getStat(Stat.ATTACK));
+    }
+
+    @Override
+    protected String describe() {
+        return "Использует Four Play - наносит урон равный атаке врага";
+    }
+}
+
+class NightShade extends SpecialMove {
+    public NightShade(Type type, double pow, double acc) {
+        super(type, pow, acc);
+    }
+
+
+    @Override
+    protected String describe() {
+        return "Использует Night Shade - наносит урон равный уровню";
     }
 }
 
