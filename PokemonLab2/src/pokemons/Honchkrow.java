@@ -1,4 +1,7 @@
-import ru.ifmo.se.pokemon.Type;
+package pokemons;
+
+import attacks.*;
+import ru.ifmo.se.pokemon.*;
 
 public class Honchkrow extends Murkrow {
     public Honchkrow(String name, int level) {

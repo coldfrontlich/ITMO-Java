@@ -1,3 +1,6 @@
+package pokemons;
+
+import attacks.*;
 import ru.ifmo.se.pokemon.*;
 
 public class Murkrow extends Pokemon {

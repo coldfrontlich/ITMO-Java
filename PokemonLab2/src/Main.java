@@ -1,5 +1,6 @@
 //32571
 import ru.ifmo.se.pokemon.*;
+import pokemons.*;
 
 public class Main {
     public static void main(String[] args) {
