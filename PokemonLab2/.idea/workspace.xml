@@ -51,6 +51,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IntelliJ IDEA 2022.2.1\MyProjects\ITMO-Java\PokemonLab2\out\artifacts" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -83,6 +88,16 @@
       <workItem from="1667844362273" duration="457000" />
       <workItem from="1667927533614" duration="416000" />
       <workItem from="1667927966364" duration="2161000" />
+      <workItem from="1667931478994" duration="609000" />
+      <workItem from="1667932795677" duration="79000" />
+      <workItem from="1667938637635" duration="1875000" />
+      <workItem from="1667943052586" duration="821000" />
+      <workItem from="1667981184705" duration="87000" />
+      <workItem from="1667981527236" duration="107000" />
+      <workItem from="1667982012355" duration="166000" />
+      <workItem from="1667996725630" duration="4511000" />
+      <workItem from="1668446793590" duration="2425000" />
+      <workItem from="1668453604524" duration="2230000" />
     </task>
     <servers />
   </component>
