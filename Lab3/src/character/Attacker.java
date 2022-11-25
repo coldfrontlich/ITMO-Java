@@ -7,6 +7,15 @@ import interfaces.IInteractiveEvil;
 
 public abstract class Attacker extends Character implements IInteractiveEvil {
     private InteractiveEvilState interactive;
+    private int killsCount;
+
+    public int getKillsCount() {
+        return killsCount;
+    }
+
+    public void setKillsCount(int killsCount) {
+        this.killsCount = killsCount;
+    }
 
     public InteractiveEvilState getInteractive() {
         return interactive;
@@ -19,6 +28,7 @@ public abstract class Attacker extends Character implements IInteractiveEvil {
     public Attacker(String name, LocationState location, PhysicalState physical) {
         super(name, location, physical);
         this.interactive = InteractiveEvilState.WAITING;
+        this.killsCount = 0;
     }
 
 }
