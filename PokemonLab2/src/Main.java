@@ -14,7 +14,7 @@ public class Main {
         ArrayList<Pokemon> pokemonsInBattle = new ArrayList<>();
         int[] pokemonsExistArray = new int[]{0, 0, 0, 0};
         try {
-            Honchkrow p1 = new Honchkrow("Bibich", 1);
+            Honchkrow p1 = new Honchkrow("Bibich", -1);
             b.addAlly(p1);
             pokemonsInBattle.add(p1);
             pokemonsExistArray[0] = 1;
@@ -23,7 +23,7 @@ public class Main {
         }
 
         try {
-            Bounsweet p2 = new Bounsweet("Bubech", 1);
+            Bounsweet p2 = new Bounsweet("Bubech", -1);
             b.addFoe(p2);
             pokemonsInBattle.add(p2);
             pokemonsExistArray[1] = 1;
@@ -32,7 +32,7 @@ public class Main {
         }
 
         try {
-            Tsareena p3 = new Tsareena("Jesus", 1);
+            Tsareena p3 = new Tsareena("Jesus", -1);
             b.addAlly(p3);
             pokemonsInBattle.add(p3);
             pokemonsExistArray[2] = 1;
