@@ -12,31 +12,6 @@ public class Pursuer extends Attacker {
         super(name, location, physical);
         System.out.println("Преследователь появился на поле боя");
     }
-
-    private void findLocations(LocationState location) {
-        if (location == LocationState.GALLERY) {
-            System.out.println("Преследователь ищет жертв в Галерее ");
-        } else if (location == LocationState.VILLAGE) {
-            System.out.println("Преследователь ищет жертв в деревне ");
-        } else if (location == LocationState.UNDERWATERWORLD) {
-            System.out.println("Преследователь ищет жертв в подводном мире ");
-        } else {
-            System.out.println("Преследователь ищет вокруг себя");
-        }
-    }
-
-    private void hideLocations(LocationState location) {
-        if (location == LocationState.GALLERY) {
-            System.out.println("Преследователь прячется за стендом в Галерее ");
-        } else if (location == LocationState.VILLAGE) {
-            System.out.println("Преследователь прячется за деревьями в деревне ");
-        } else if (location == LocationState.UNDERWATERWORLD) {
-            System.out.println("Преследователь прячется за руинами древних в подводном мире ");
-        } else {
-            System.out.println("Преследователь прячется");
-        }
-    }
-
     @Override
     public void changeBehavior(InteractiveEvilState state) {
         setInteractive(state);
@@ -95,5 +70,29 @@ public class Pursuer extends Attacker {
     @Override
     public int hashCode() {
         return Objects.hash(this.getName(), this.getInteractive(), this.getPhysical(), this.getLocation(), this.getKillsCount());
+    }
+
+    private void findLocations(LocationState location) {
+        if (location == LocationState.GALLERY) {
+            System.out.println("Преследователь ищет жертв в Галерее ");
+        } else if (location == LocationState.VILLAGE) {
+            System.out.println("Преследователь ищет жертв в деревне ");
+        } else if (location == LocationState.UNDERWATERWORLD) {
+            System.out.println("Преследователь ищет жертв в подводном мире ");
+        } else {
+            System.out.println("Преследователь ищет вокруг себя");
+        }
+    }
+
+    private void hideLocations(LocationState location) {
+        if (location == LocationState.GALLERY) {
+            System.out.println("Преследователь прячется за стендом в Галерее ");
+        } else if (location == LocationState.VILLAGE) {
+            System.out.println("Преследователь прячется за деревьями в деревне ");
+        } else if (location == LocationState.UNDERWATERWORLD) {
+            System.out.println("Преследователь прячется за руинами древних в подводном мире ");
+        } else {
+            System.out.println("Преследователь прячется");
+        }
     }
 }
