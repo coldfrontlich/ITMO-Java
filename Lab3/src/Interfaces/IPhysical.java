@@ -1,7 +1,7 @@
-package Interfaces;
+package interfaces;
 
 import enums.PhysicalState;
 
 public interface IPhysical {
-    void changePhysicalState(PhysicalState state);
+    void changePhysicalState(PhysicalState condition);
 }
