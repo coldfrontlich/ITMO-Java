@@ -43,8 +43,6 @@ public abstract class Character implements IPhysical {
         String characterName = this.getName();
         if (condition == PhysicalState.ALIVE) {
             System.out.println(characterName + (earlyCondition != PhysicalState.ALIVE ? " живой" : " живее всех живых"));
-        } else if (condition == PhysicalState.SURVIVED) {
-            System.out.println(characterName + (earlyCondition != PhysicalState.SURVIVED ? " сбежал от этого ужаса" : " попивает горячий чай дома"));
         } else if (condition == PhysicalState.INJURED) {
             System.out.println(characterName + (earlyCondition != PhysicalState.INJURED ? " ранен" : " сильно ранен"));
         } else if (condition == PhysicalState.DEAD) {

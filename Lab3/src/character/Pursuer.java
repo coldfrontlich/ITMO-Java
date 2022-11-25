@@ -4,6 +4,8 @@ import enums.InteractiveEvilState;
 import enums.LocationState;
 import enums.PhysicalState;
 
+import java.util.Objects;
+
 public class Pursuer extends Attacker {
 
     public Pursuer(String name, LocationState location, PhysicalState physical) {
@@ -50,5 +52,48 @@ public class Pursuer extends Attacker {
             System.out.println("Преследователь догнал и зарезал жертву");
             setKillsCount(getKillsCount() + 1);
         }
+    }
+
+    public void changeLocation(LocationState location) {
+        LocationState locationEarly = getLocation();
+        setLocation(location);
+        if (locationEarly == location) {
+            System.out.println("Преследователь остается там же ");
+        } else if (location == LocationState.VILLAGE) {
+            System.out.println("Преследователь переходит в деревню ");
+        } else if (location == LocationState.GALLERY) {
+            System.out.println("Преследователь переходит в галерею ");
+        } else if (location == LocationState.UNDERWATERWORLD) {
+            System.out.println("Преследователь переходит в подводный мир ");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Pursuer{ " + "name = " + getName() +
+                "; location = " + getLocation() +
+                "; physical state = " + getPhysical() +
+                "; interactive = " + getInteractive() +
+                "; kill count = " + getKillsCount() +
+                " }";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Pursuer pursuer = (Pursuer) obj;
+        return (this.getName()).equals(pursuer.getName())
+                && (this.getInteractive()).equals(pursuer.getInteractive())
+                && (this.getLocation()).equals(pursuer.getLocation())
+                && (this.getPhysical()).equals(pursuer.getPhysical())
+                && ((this.getKillsCount()) == (pursuer.getKillsCount()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getInteractive(), this.getPhysical(), this.getLocation(), this.getKillsCount());
     }
 }
