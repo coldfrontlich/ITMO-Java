@@ -24,11 +24,12 @@ public class Pursuer extends Attacker {
         } else if (state == InteractiveEvilState.PURSUE) {
             System.out.println("Преследователь следует за жертвой");
         } else if (state == InteractiveEvilState.CAUGHTUP) {
-            System.out.println("Преследователь догнал и зарезал жертву");
-            setKillsCount(getKillsCount() + 1);
+            System.out.println("Преследователь догнал жертву");
         }
     }
 
+
+    @Override
     public void changeLocation(LocationState location) {
         LocationState locationEarly = getLocation();
         setLocation(location);
@@ -41,6 +42,13 @@ public class Pursuer extends Attacker {
         } else if (location == LocationState.UNDERWATERWORLD) {
             System.out.println("Преследователь переходит в подводный мир ");
         }
+    }
+
+    @Override
+    public void killCitizen(Hidden hidden) {
+        System.out.println("Преследователь убил " + hidden.getName());
+        setKillsCount(getKillsCount() + 1);
+        hidden.changePhysicalState(PhysicalState.DEAD);
     }
 
     @Override

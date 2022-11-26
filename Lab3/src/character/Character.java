@@ -51,4 +51,6 @@ public abstract class Character implements IPhysical {
             System.out.println(characterName + (earlyCondition != PhysicalState.INVINCIBLE ? " неуязвим" : " всё ещё неуязвим"));
         }
     }
+
+    public abstract void changeLocation(LocationState location);
 }

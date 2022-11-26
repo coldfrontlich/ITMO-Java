@@ -31,4 +31,6 @@ public abstract class Attacker extends Character implements IInteractiveEvil {
         this.killsCount = 0;
     }
 
+    public abstract void killCitizen(Hidden hidden);
+
 }
