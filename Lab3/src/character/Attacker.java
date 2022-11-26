@@ -14,7 +14,11 @@ public abstract class Attacker extends Character implements IInteractiveEvil {
     }
 
     public void setKillsCount(int killsCount) {
-        this.killsCount = killsCount;
+        if (killsCount < 0) {
+            this.killsCount = 0;
+        } else {
+            this.killsCount = killsCount;
+        }
     }
 
     public InteractiveEvilState getInteractive() {

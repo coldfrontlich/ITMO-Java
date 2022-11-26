@@ -4,6 +4,8 @@ import enums.InteractiveGoodState;
 import enums.LocationState;
 import enums.PhysicalState;
 
+import java.util.Objects;
+
 public class Ancient extends Hidden{
 
     public Ancient(String name, LocationState location, PhysicalState physical) {
@@ -46,7 +48,36 @@ public class Ancient extends Hidden{
 
     @Override
     public void attackAttacker(Attacker attacker) {
-        System.out.println(getName() + " полный ярости атакует маньяка магической тростью");
+        System.out.println(getName() + " в целях защиты атакует маньяка магической тростью");
         attacker.changePhysicalState(PhysicalState.INJURED);
     }
+
+    @Override
+    public String toString() {
+        return "Ancient{ " + "name = " + getName() +
+                "; location = " + getLocation() +
+                "; physical state = " + getPhysical() +
+                "; interactive = " + getInteractive() +
+                " }";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Ancient ancient = (Ancient) obj;
+        return (this.getName()).equals(ancient.getName())
+                && (this.getInteractive()).equals(ancient.getInteractive())
+                && (this.getLocation()).equals(ancient.getLocation())
+                && (this.getPhysical()).equals(ancient.getPhysical());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getInteractive(), this.getPhysical(), this.getLocation());
+    }
+
+
 }
