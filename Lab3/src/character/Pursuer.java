@@ -1,63 +1,70 @@
 package character;
 
-import enums.InteractiveEvilState;
 import enums.LocationState;
 import enums.PhysicalState;
 
 import java.util.Objects;
 
-public class Pursuer extends Attacker {
+public class Pursuer extends Character {
 
-    public Pursuer(String name, LocationState location, PhysicalState physical) {
-        super(name, location, physical);
-        System.out.println("Преследователь появился на поле боя");
+    public Pursuer(LocationState location, PhysicalState physical) {
+        super("Преследователь", location, physical);
+        System.out.println("Преследователь появился");
     }
-    @Override
-    public void changeBehavior(InteractiveEvilState state) {
-        setInteractive(state);
-        if (state == InteractiveEvilState.SEEK) {
-            findLocations(getLocation());
-        } else if (state == InteractiveEvilState.LEAVE){
-            System.out.println(getName() + " уходит, количество жертв - " + getKillsCount());
-        } else if (state == InteractiveEvilState.WAITING) {
-            hideLocations(getLocation());
-        } else if (state == InteractiveEvilState.PURSUE) {
-            System.out.println("Преследователь следует за жертвой");
-        } else if (state == InteractiveEvilState.CAUGHTUP) {
-            System.out.println("Преследователь догнал жертву");
+
+    public void showDescription(){
+        System.out.println(getName() + " выживший участник немыслимой бойни");
+    }
+
+    public void showAbilities(Character character) {
+        if (character instanceof Travallers) {
+            System.out.println(getName() + " мог догнать нас меньше чем за минуту");
+        } else {
+            System.out.println(getName() + " мог догнать " + character.getName() + " меньше чем за минуту");
+        }
+    }
+
+    public void checkThreat(Character character) {
+        if (character instanceof Travallers) {
+            System.out.println(getName() + " не чувствует от них никакой угрозы");
+        } else {
+            System.out.println(getName() + " чувствует угрозу");
+        }
+    }
+
+    public void wounded() {
+        changePhysicalState(PhysicalState.INJURED);
+    }
+
+    public void hearVoice(Character character) {
+        if (character instanceof Denfort) {
+            Denfort denfort = (Denfort) character;
+            if (denfort.isShout()) {
+                System.out.println(getName() + " услышал крик Денфорта и устремился вперед");
+            }
+        } else {
+            System.out.println(getName() + " ничего не услышал");
+        }
+    }
+
+    public void ruinRelief(Character character) {
+        if (character instanceof Ancient) {
+            Ancient ancient = (Ancient) character;
+            ancient.setReliefOK(false);
+            System.out.println(getName() + " испоганил барельеф " + ancient.getName());
+        } else {
+            System.out.println(getName() + " ничего не делал с барельефом " + character.getName());
         }
     }
 
 
-    @Override
-    public void changeLocation(LocationState location) {
-        LocationState locationEarly = getLocation();
-        setLocation(location);
-        if (locationEarly == location) {
-            System.out.println("Преследователь остается там же ");
-        } else if (location == LocationState.VILLAGE) {
-            System.out.println("Преследователь переходит в деревню ");
-        } else if (location == LocationState.GALLERY) {
-            System.out.println("Преследователь переходит в галерею ");
-        } else if (location == LocationState.UNDERWATERWORLD) {
-            System.out.println("Преследователь переходит в подводный мир ");
-        }
-    }
 
-    @Override
-    public void killCitizen(Hidden hidden) {
-        System.out.println("Преследователь убил " + hidden.getName());
-        setKillsCount(getKillsCount() + 1);
-        hidden.changePhysicalState(PhysicalState.DEAD);
-    }
 
     @Override
     public String toString() {
         return "Pursuer{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
-                "; interactive = " + getInteractive() +
-                "; kill count = " + getKillsCount() +
                 " }";
     }
 
@@ -69,38 +76,13 @@ public class Pursuer extends Attacker {
             return false;
         Pursuer pursuer = (Pursuer) obj;
         return (this.getName()).equals(pursuer.getName())
-                && (this.getInteractive()).equals(pursuer.getInteractive())
                 && (this.getLocation()).equals(pursuer.getLocation())
-                && (this.getPhysical()).equals(pursuer.getPhysical())
-                && ((this.getKillsCount()) == (pursuer.getKillsCount()));
+                && (this.getPhysical()).equals(pursuer.getPhysical());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getInteractive(), this.getPhysical(), this.getLocation(), this.getKillsCount());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
     }
 
-    private void findLocations(LocationState location) {
-        if (location == LocationState.GALLERY) {
-            System.out.println("Преследователь ищет жертв в Галерее ");
-        } else if (location == LocationState.VILLAGE) {
-            System.out.println("Преследователь ищет жертв в деревне ");
-        } else if (location == LocationState.UNDERWATERWORLD) {
-            System.out.println("Преследователь ищет жертв в подводном мире ");
-        } else {
-            System.out.println("Преследователь ищет вокруг себя");
-        }
-    }
-
-    private void hideLocations(LocationState location) {
-        if (location == LocationState.GALLERY) {
-            System.out.println("Преследователь прячется за стендом в Галерее ");
-        } else if (location == LocationState.VILLAGE) {
-            System.out.println("Преследователь прячется за деревьями в деревне ");
-        } else if (location == LocationState.UNDERWATERWORLD) {
-            System.out.println("Преследователь прячется за руинами древних в подводном мире ");
-        } else {
-            System.out.println("Преследователь прячется");
-        }
-    }
 }

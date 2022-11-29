@@ -2,6 +2,6 @@ package enums;
 
 public enum LocationState {
     GALLERY,
-    VILLAGE,
+    DEFAULT,
     UNDERWATERWORLD
 }

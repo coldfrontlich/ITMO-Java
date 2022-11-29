@@ -1,10 +1,12 @@
 package character;
 
+import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
+import interfaces.ICondition;
 import interfaces.IPhysical;
 
-public abstract class Character implements IPhysical {
+public abstract class Character implements IPhysical, ICondition {
 
     private final String name;
     private LocationState location;
@@ -12,7 +14,7 @@ public abstract class Character implements IPhysical {
 
     public Character(String name, LocationState location, PhysicalState physical) {
         this.name = name;
-        this.location = location == null ? LocationState.VILLAGE : location;
+        this.location = location == null ? LocationState.DEFAULT : location;
         this.physical = physical == null ? PhysicalState.ALIVE : physical;
     }
 
@@ -47,10 +49,17 @@ public abstract class Character implements IPhysical {
             System.out.println(characterName + (earlyCondition != PhysicalState.INJURED ? " ранен" : " сильно ранен"));
         } else if (condition == PhysicalState.DEAD) {
             System.out.println(characterName + (earlyCondition != PhysicalState.DEAD ? " погиб" : " всё ещё мертв"));
-        } else if (condition == PhysicalState.INVINCIBLE) {
-            System.out.println(characterName + (earlyCondition != PhysicalState.INVINCIBLE ? " неуязвим" : " всё ещё неуязвим"));
         }
     }
 
-    public abstract void changeLocation(LocationState location);
+    @Override
+    public void showCondition(ConditonState conditonState) {
+        if (conditonState == ConditonState.WITHOUTAGGRESSION) {
+            System.out.println(getName() + " - без агрессии ");
+        } else if (conditonState == ConditonState.GOODINTENSIONS) {
+            System.out.println(getName() + " - с добрыми намерениями");
+        } else if (conditonState == ConditonState.CURIOSITY) {
+            System.out.println(getName() + " - проявление любознательности");
+        }
+    }
 }
