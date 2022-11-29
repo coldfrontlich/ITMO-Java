@@ -23,15 +23,12 @@ public class Ancient extends Character{
     }
 
 
-
-
-
-
     @Override
     public String toString() {
         return "Ancient{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; reliefOK = " + isReliefOK() +
                 " }";
     }
 
@@ -44,12 +41,13 @@ public class Ancient extends Character{
         Ancient ancient = (Ancient) obj;
         return (this.getName()).equals(ancient.getName())
                 && (this.getLocation()).equals(ancient.getLocation())
-                && (this.getPhysical()).equals(ancient.getPhysical());
+                && (this.getPhysical()).equals(ancient.getPhysical())
+                && (this.isReliefOK() == (ancient.isReliefOK()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isReliefOK());
     }
 
 

@@ -5,6 +5,8 @@ import enums.PhysicalState;
 import environment.Environment;
 import environment.WhiteSteam;
 
+import java.util.Objects;
+
 public class Travallers extends Character {
 
     public Travallers(String name, LocationState location, PhysicalState physical) {
@@ -41,11 +43,7 @@ public class Travallers extends Character {
     }
 
     public void knowHow(Character character) {
-        if (character instanceof Ancient) {
-            System.out.println(getName() + " знали как быстро " + character.getName() + " перемещаются в пространстве");
-        } else {
-            System.out.println(getName() + " не знали как быстро перемещаются " + character.getName());
-        }
+        System.out.println(getName() + " знали как быстро " + character.getName() + " перемещаются в пространстве");
     }
 
     public void hope() {
@@ -76,5 +74,30 @@ public class Travallers extends Character {
 
     public void regret(Character character) {
         System.out.println("Жалко оставлять " + character.getName() + " на верную смерть");
+    }
+
+    @Override
+    public String toString() {
+        return "Travallers{ " + "name = " + getName() +
+                "; location = " + getLocation() +
+                "; physical state = " + getPhysical() +
+                " }";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Travallers travallers = (Travallers) obj;
+        return (this.getName()).equals(travallers.getName())
+                && (this.getLocation()).equals(travallers.getLocation())
+                && (this.getPhysical()).equals(travallers.getPhysical());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
     }
 }

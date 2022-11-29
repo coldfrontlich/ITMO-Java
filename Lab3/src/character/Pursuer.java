@@ -43,7 +43,7 @@ public class Pursuer extends Character {
                 System.out.println(getName() + " услышал крик Денфорта и устремился вперед");
             }
         } else {
-            System.out.println(getName() + " ничего не услышал");
+            System.out.println(getName() + " услышал крик " + character.getName());
         }
     }
 
@@ -53,7 +53,7 @@ public class Pursuer extends Character {
             ancient.setReliefOK(false);
             System.out.println(getName() + " испоганил барельеф " + ancient.getName());
         } else {
-            System.out.println(getName() + " ничего не делал с барельефом " + character.getName());
+            System.out.println(getName() + " испоганил барельеф " + character.getName());
         }
     }
 

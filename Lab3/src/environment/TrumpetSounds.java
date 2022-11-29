@@ -1,5 +1,9 @@
 package environment;
 
+import character.Travallers;
+
+import java.util.Objects;
+
 public class TrumpetSounds extends Environment {
 
     public TrumpetSounds() {
@@ -19,5 +23,28 @@ public class TrumpetSounds extends Environment {
         } else {
             System.out.println(getName() + " замолкли");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "TrumpetSounds{ " + "name = " + getName() +
+                "; Exists = " + isExists() +
+                " }";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        TrumpetSounds trumpetSounds = (TrumpetSounds) obj;
+        return (this.getName()).equals(trumpetSounds.getName())
+                && ((this.isExists()) == (trumpetSounds.isExists()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.isExists());
     }
 }
