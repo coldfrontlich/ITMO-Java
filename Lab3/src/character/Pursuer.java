@@ -2,10 +2,11 @@ package character;
 
 import enums.LocationState;
 import enums.PhysicalState;
+import interfaces.Evilable;
 
 import java.util.Objects;
 
-public class Pursuer extends Character {
+public class Pursuer extends Character implements Evilable {
 
     public Pursuer(LocationState location, PhysicalState physical) {
         super("Преследователь", location, physical);
@@ -47,17 +48,18 @@ public class Pursuer extends Character {
         }
     }
 
-    public void ruinRelief(Character character) {
+
+    @Override
+    public void makeBadThings(Character character) {
         if (character instanceof Ancient) {
             Ancient ancient = (Ancient) character;
             ancient.setReliefOK(false);
             System.out.println(getName() + " испоганил барельеф " + ancient.getName());
         } else {
-            System.out.println(getName() + " испоганил барельеф " + character.getName());
+            character.changePhysicalState(PhysicalState.DEAD);
+            System.out.println(getName() + "догнал и убил " + character.getName());
         }
     }
-
-
 
 
     @Override
@@ -65,6 +67,7 @@ public class Pursuer extends Character {
         return "Pursuer{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
                 " }";
     }
 
@@ -77,12 +80,14 @@ public class Pursuer extends Character {
         Pursuer pursuer = (Pursuer) obj;
         return (this.getName()).equals(pursuer.getName())
                 && (this.getLocation()).equals(pursuer.getLocation())
+                && (this.getCondition()).equals(pursuer.getCondition())
                 && (this.getPhysical()).equals(pursuer.getPhysical());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.getCondition());
     }
+
 
 }

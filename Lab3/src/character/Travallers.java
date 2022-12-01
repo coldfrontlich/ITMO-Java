@@ -1,13 +1,15 @@
 package character;
 
+import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
 import environment.Environment;
 import environment.WhiteSteam;
+import interfaces.Goodable;
 
 import java.util.Objects;
 
-public class Travallers extends Character {
+public class Travallers extends Character implements Goodable {
 
     public Travallers(String name, LocationState location, PhysicalState physical) {
         super(name, location, physical);
@@ -81,6 +83,7 @@ public class Travallers extends Character {
         return "Travallers{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
                 " }";
     }
 
@@ -93,11 +96,24 @@ public class Travallers extends Character {
         Travallers travallers = (Travallers) obj;
         return (this.getName()).equals(travallers.getName())
                 && (this.getLocation()).equals(travallers.getLocation())
+                && (this.getCondition()).equals(travallers.getCondition())
                 && (this.getPhysical()).equals(travallers.getPhysical());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.getCondition());
+    }
+
+    @Override
+    public void makeGoodThings(Character character) {
+        if (character instanceof Pursuer) {
+            Pursuer pursuer = (Pursuer) character;
+            pursuer.setCondition(ConditonState.CURIOSITY);
+            System.out.println(pursuer.getName() + " - проявление любознательности");
+        } else {
+            character.setCondition(ConditonState.GOODINTENSIONS);
+            System.out.println(character.getName() + " - с добрыми намерениями");
+        }
     }
 }

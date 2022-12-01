@@ -28,6 +28,7 @@ public class Ancient extends Character{
         return "Ancient{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
                 "; reliefOK = " + isReliefOK() +
                 " }";
     }
@@ -42,13 +43,12 @@ public class Ancient extends Character{
         return (this.getName()).equals(ancient.getName())
                 && (this.getLocation()).equals(ancient.getLocation())
                 && (this.getPhysical()).equals(ancient.getPhysical())
+                && (this.getCondition()).equals(ancient.getCondition())
                 && (this.isReliefOK() == (ancient.isReliefOK()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isReliefOK());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isReliefOK(), this.getCondition());
     }
-
-
 }

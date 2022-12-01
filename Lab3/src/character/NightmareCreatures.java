@@ -21,6 +21,7 @@ public class NightmareCreatures extends Character{
         return "NightmareCreatures{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
                 " }";
     }
 
@@ -33,11 +34,12 @@ public class NightmareCreatures extends Character{
         NightmareCreatures nightmareCreatures = (NightmareCreatures) obj;
         return (this.getName()).equals(nightmareCreatures.getName())
                 && (this.getLocation()).equals(nightmareCreatures.getLocation())
+                && (this.getCondition()).equals(nightmareCreatures.getCondition())
                 && (this.getPhysical()).equals(nightmareCreatures.getPhysical());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.getCondition());
     }
 }

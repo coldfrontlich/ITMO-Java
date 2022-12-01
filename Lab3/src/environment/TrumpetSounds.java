@@ -1,7 +1,5 @@
 package environment;
 
-import character.Travallers;
-
 import java.util.Objects;
 
 public class TrumpetSounds extends Environment {

@@ -31,6 +31,7 @@ public class Denfort extends Character{
         return "Denfort{ " + "name = " + getName() +
                 "; location = " + getLocation() +
                 "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
                 "; shout = " + isShout() +
                 " }";
     }
@@ -45,11 +46,12 @@ public class Denfort extends Character{
         return (this.getName()).equals(denfort.getName())
                 && (this.getLocation()).equals(denfort.getLocation())
                 && (this.getPhysical()).equals(denfort.getPhysical())
+                && (this.getCondition()).equals(denfort.getCondition())
                 && (this.isShout() == (denfort.isShout()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isShout());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(),this.getCondition(), this.isShout());
     }
 }

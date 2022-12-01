@@ -1,3 +1,4 @@
+//32324
 import character.*;
 import enums.ConditonState;
 import enums.LocationState;
@@ -32,7 +33,7 @@ public class Main {
         travallers.hope();
         travallers.showCondition(ConditonState.WITHOUTAGGRESSION);
         travallers.showCondition(ConditonState.GOODINTENSIONS);
-        pursuer.showCondition(ConditonState.CURIOSITY);
+        travallers.makeGoodThings(pursuer);
         System.out.println();
 
         pursuer.checkThreat(travallers);
@@ -54,7 +55,7 @@ public class Main {
         System.out.println();
 
         nightmareCreatures.showDescription();
-        pursuer.ruinRelief(ancients);
+        pursuer.makeBadThings(ancients);
         travallers.regret(pursuer);
     }
 }

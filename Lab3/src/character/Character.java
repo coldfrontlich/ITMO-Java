@@ -3,19 +3,30 @@ package character;
 import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
-import interfaces.ICondition;
-import interfaces.IPhysical;
 
-public abstract class Character implements IPhysical, ICondition {
+import java.util.Objects;
+
+public abstract class Character {
 
     private final String name;
     private LocationState location;
     private PhysicalState physical;
 
+    public ConditonState getCondition() {
+        return condition;
+    }
+
+    public void setCondition(ConditonState condition) {
+        this.condition = condition;
+    }
+
+    private ConditonState condition;
+
     public Character(String name, LocationState location, PhysicalState physical) {
         this.name = name;
         this.location = location == null ? LocationState.DEFAULT : location;
         this.physical = physical == null ? PhysicalState.ALIVE : physical;
+        this.condition = ConditonState.WITHOUTAGGRESSION;
     }
 
     public String getName() {
@@ -38,7 +49,7 @@ public abstract class Character implements IPhysical, ICondition {
         this.physical = physical;
     }
 
-    @Override
+
     public void changePhysicalState(PhysicalState condition) {
         PhysicalState earlyCondition = this.getPhysical();
         setPhysical(condition);
@@ -52,7 +63,7 @@ public abstract class Character implements IPhysical, ICondition {
         }
     }
 
-    @Override
+
     public void showCondition(ConditonState conditonState) {
         if (conditonState == ConditonState.WITHOUTAGGRESSION) {
             System.out.println(getName() + " - без агрессии ");
@@ -61,5 +72,32 @@ public abstract class Character implements IPhysical, ICondition {
         } else if (conditonState == ConditonState.CURIOSITY) {
             System.out.println(getName() + " - проявление любознательности");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Character{ " + "name = " + getName() +
+                "; location = " + getLocation() +
+                "; physical state = " + getPhysical() +
+                "; condition state = " + getCondition() +
+                " }";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Character character = (Character) obj;
+        return (this.getName()).equals(character.getName())
+                && (this.getLocation()).equals(character.getLocation())
+                && (this.getPhysical()).equals(character.getPhysical())
+                && (this.getCondition()).equals(character.getCondition());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.getCondition());
     }
 }
