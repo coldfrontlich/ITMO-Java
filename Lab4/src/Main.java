@@ -3,12 +3,16 @@ import character.*;
 import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
+import environment.Picture;
 import environment.StrangeVoice;
 import environment.TrumpetSounds;
 import environment.WhiteSteam;
 
 public class Main {
     public static void main(String[] args) {
+        Picture picture = new Picture("Рисунок");
+        Penguins penguins = new Penguins("Пингвины", LocationState.DEFAULT, PhysicalState.ALIVE);
+        picture.appear();
         Travallers travallers = new Travallers("Мы", LocationState.DEFAULT, PhysicalState.ALIVE);
         Denfort denfort = new Denfort(LocationState.DEFAULT, PhysicalState.ALIVE);
         WhiteSteam whiteSteam = new WhiteSteam();
@@ -16,6 +20,11 @@ public class Main {
         Ancient ancients = new Ancient( LocationState.DEFAULT, PhysicalState.ALIVE);
         Pursuer pursuer = new Pursuer( LocationState.DEFAULT, PhysicalState.ALIVE);
         NightmareCreatures nightmareCreatures = new NightmareCreatures(PhysicalState.ALIVE);
+        System.out.println();
+
+        picture.makeImpact(travallers);
+        travallers.hear(penguins);
+        penguins.scream(travallers);
         System.out.println();
 
         travallers.hear(pursuer);
