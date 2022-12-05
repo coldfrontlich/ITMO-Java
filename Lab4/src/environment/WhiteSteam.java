@@ -1,8 +1,11 @@
 package environment;
 
+import character.Character;
+import interfaces.Goodable;
+
 import java.util.Objects;
 
-public class WhiteSteam extends Environment {
+public class WhiteSteam extends Environment implements Goodable {
 
     public WhiteSteam() {
         super("Облака белого пара");
@@ -36,5 +39,10 @@ public class WhiteSteam extends Environment {
     @Override
     public int hashCode() {
         return Objects.hash(this.getName(), this.isExists());
+    }
+
+    @Override
+    public void makeGoodThings(Character character) {
+        System.out.println(getName() + " оказали помощь " + character.getName() + ", закрыв плотной завесой");
     }
 }

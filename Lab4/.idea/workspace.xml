@@ -38,7 +38,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IntelliJ IDEA 2022.2.1/MyProjects/ITMO-Java/Lab3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IntelliJ IDEA 2022.2.1/MyProjects/ITMO-Java/Lab4&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
@@ -78,7 +78,9 @@
       <workItem from="1669810867820" duration="3809000" />
       <workItem from="1669880657069" duration="1126000" />
       <workItem from="1670182808534" duration="1812000" />
-      <workItem from="1670234989236" duration="7883000" />
+      <workItem from="1670234989236" duration="13020000" />
+      <workItem from="1670255675534" duration="6163000" />
+      <workItem from="1670273645331" duration="682000" />
     </task>
     <servers />
   </component>
@@ -95,5 +97,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/story/StoryTeller.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

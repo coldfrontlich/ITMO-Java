@@ -38,4 +38,10 @@ public class SmellUnknownOrigin extends Environment {
         formerSmell.setOusted(true);
         System.out.println(getName() + " вытеснил " + formerSmell.getName());
     }
+
+    public void checkStanding() {
+        if (isExists()) {
+            System.out.println("В возздухе висел " + getName());
+        }
+    }
 }

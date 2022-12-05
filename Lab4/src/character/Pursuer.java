@@ -57,9 +57,10 @@ public class Pursuer extends Character implements Evilable {
             System.out.println(getName() + " испоганил барельеф " + ancient.getName());
         } else {
             character.changePhysicalState(PhysicalState.DEAD);
-            System.out.println(getName() + "догнал и убил " + character.getName());
+            System.out.println(getName() + " догнал и убил " + character.getName());
         }
     }
+
 
 
     @Override

@@ -3,5 +3,6 @@ package enums;
 public enum LocationState {
     GALLERY,
     DEFAULT,
-    UNDERWATERWORLD
+    UNDERWATERWORLD,
+    PEAK
 }

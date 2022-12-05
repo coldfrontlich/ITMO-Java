@@ -2,12 +2,22 @@ package character;
 
 import enums.LocationState;
 import enums.PhysicalState;
+import interfaces.Goodable;
 
-public class Penguins extends Character{
+public class Penguins extends Character implements Goodable {
     public Penguins(String name, LocationState location, PhysicalState physical) {
         super(name, location, physical);
     }
-    private class Nest {
+
+    @Override
+    public void makeGoodThings(Character character) {
+        System.out.println(getName() + " оказали помощь " + character.getName());
+    }
+
+    private void polish() {
+        System.out.println(getName() + " отполировали пол до блеска");
+    }
+    public class Nest {
         public Nest(LocationState location) {
             this.location = location;
         }
@@ -21,6 +31,24 @@ public class Penguins extends Character{
             this.location = location;
         }
     }
+
+    public class Floor{
+        private boolean floorPolish;
+
+        public boolean isFloorPolish() {
+            return floorPolish;
+        }
+
+        public void setFloorPolish(boolean floorPolish) {
+            this.floorPolish = floorPolish;
+        }
+
+        public void polish() {
+            setFloorPolish(true);
+            Penguins.this.polish();
+        }
+    }
+
     public void scream(Character character){
         System.out.println(getName() + " кричали на " + character.getName());
     }

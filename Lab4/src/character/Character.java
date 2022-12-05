@@ -74,6 +74,14 @@ public abstract class Character {
         }
     }
 
+    public void choosePath(boolean right) {
+        if (right) {
+            System.out.println(getName() + " пошел по правильному пути ");
+        } else {
+            System.out.println(getName() + " пошел по ложному пути");
+        }
+    }
+
     @Override
     public String toString() {
         return "Character{ " + "name = " + getName() +

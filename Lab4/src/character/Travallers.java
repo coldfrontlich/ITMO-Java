@@ -73,7 +73,7 @@ public class Travallers extends Character implements Goodable {
             Ancient ancient = (Ancient) character;
             System.out.println(getName() + " увидели " + ancient.getAmount() + " мертвых звездоголовых");
         } else {
-            System.out.println(getName() + " посмотрели на " + character.getName());
+            System.out.println(getName() + " не осмеялись взглянуть на " + character.getName());
         }
     }
 
@@ -90,6 +90,21 @@ public class Travallers extends Character implements Goodable {
     public void climb(Environment environment) {
         System.out.println(getName() + " карабкаются в сторону " + environment.getName());
     }
+
+    public void climb(LocationState location) {
+        if (location == LocationState.PEAK) {
+            System.out.println(getName() + " карабкаются в сторону вершины");
+            setLocation(LocationState.PEAK);
+        }
+    }
+
+    public void farewell() {
+        if (getLocation() == LocationState.PEAK) {
+            System.out.println(getName() + " прощаются с городом");
+        }
+    }
+
+
 
     @Override
     public String toString() {

@@ -13,8 +13,12 @@ public class StrangeVoice extends Environment {
 
     @Override
     public void appear() {
-        setExists(true);
-        System.out.println("Текели-ли! Текели-ли!");
+        if (isExists()) {
+            System.out.println("Вновь прогремел звук \"Текели-ли! Текели-ли!\"");
+        } else {
+            setExists(true);
+            System.out.println("Текели-ли! Текели-ли!");
+        }
     }
 
     @Override
