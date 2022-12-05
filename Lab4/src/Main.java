@@ -3,28 +3,44 @@ import character.*;
 import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
-import environment.Picture;
-import environment.StrangeVoice;
-import environment.TrumpetSounds;
-import environment.WhiteSteam;
+import environment.*;
 
 public class Main {
     public static void main(String[] args) {
-        Picture picture = new Picture("Рисунок");
-        Penguins penguins = new Penguins("Пингвины", LocationState.DEFAULT, PhysicalState.ALIVE);
-        picture.appear();
         Travallers travallers = new Travallers("Мы", LocationState.DEFAULT, PhysicalState.ALIVE);
         Denfort denfort = new Denfort(LocationState.DEFAULT, PhysicalState.ALIVE);
         WhiteSteam whiteSteam = new WhiteSteam();
         TrumpetSounds trumpetSounds = new TrumpetSounds();
-        Ancient ancients = new Ancient( LocationState.DEFAULT, PhysicalState.ALIVE);
+        Ancient ancients = new Ancient( LocationState.DEFAULT, PhysicalState.DEAD, 4);
         Pursuer pursuer = new Pursuer( LocationState.DEFAULT, PhysicalState.ALIVE);
         NightmareCreatures nightmareCreatures = new NightmareCreatures(PhysicalState.ALIVE);
         System.out.println();
 
+        Picture picture = new Picture("Рисунок");
+        picture.appear();
         picture.makeImpact(travallers);
+        Penguins penguins = new Penguins("Пингвины", LocationState.DEFAULT, PhysicalState.ALIVE);
         travallers.hear(penguins);
         penguins.scream(travallers);
+        SmellUnknownOrigin smellUnknownOrigin = new SmellUnknownOrigin("Запах неизвестного происхождения");
+        smellUnknownOrigin.appear();
+        smellUnknownOrigin.pushedOut(new SmellUnknownOrigin.FormerSmell("Прежний запах"));
+        System.out.println();
+
+        travallers.look(ancients);
+        penguins.click(LocationState.DEFAULT);
+        travallers.examineRemains(ancients);
+        denfort.shoutLoud(ancients);
+        System.out.println();
+
+        Slime slime = new Slime("Черная слизь", ancients);
+        slime.appear();
+        slime.giveOffOdor(smellUnknownOrigin);
+        System.out.println();
+
+        Daylight daylight = new Daylight("Дневной свет");
+        daylight.appear();
+        travallers.climb(daylight);
         System.out.println();
 
         travallers.hear(pursuer);

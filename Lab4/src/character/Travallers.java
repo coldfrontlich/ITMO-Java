@@ -65,10 +65,13 @@ public class Travallers extends Character implements Goodable {
     }
 
     public void look(Character character) {
-        if(character instanceof Pursuer) {
-            if(character.getPhysical() == PhysicalState.INJURED) {
+        if (character instanceof Pursuer) {
+            if (character.getPhysical() == PhysicalState.INJURED) {
                 System.out.println(getName() + " не решились посмотреть");
             }
+        } if (character instanceof Ancient) {
+            Ancient ancient = (Ancient) character;
+            System.out.println(getName() + " увидели " + ancient.getAmount() + " мертвых звездоголовых");
         } else {
             System.out.println(getName() + " посмотрели на " + character.getName());
         }
@@ -76,6 +79,16 @@ public class Travallers extends Character implements Goodable {
 
     public void regret(Character character) {
         System.out.println("Жалко оставлять " + character.getName() + " на верную смерть");
+    }
+
+    public void examineRemains(Ancient ancient) {
+        if (ancient.isWithoutHeads() && ancient.getPhysical() == PhysicalState.DEAD) {
+            System.out.println(getName() + " увидели изуродованные останки тел без голов");
+        }
+    }
+
+    public void climb(Environment environment) {
+        System.out.println(getName() + " карабкаются в сторону " + environment.getName());
     }
 
     @Override

@@ -7,6 +7,27 @@ import java.util.Objects;
 
 public class Ancient extends Character{
 
+    private int amount;
+    private boolean withoutHeads;
+
+    public boolean isWithoutHeads() {
+        return withoutHeads;
+    }
+
+    public void setWithoutHeads(boolean withoutHeads) {
+        this.withoutHeads = withoutHeads;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+
+
     private boolean reliefOK;
 
     public boolean isReliefOK() {
@@ -16,8 +37,10 @@ public class Ancient extends Character{
     public void setReliefOK(boolean reliefOK) {
         this.reliefOK = reliefOK;
     }
-    public Ancient( LocationState location, PhysicalState physical) {
+    public Ancient( LocationState location, PhysicalState physical, int amount) {
         super("Старцы", location, physical);
+        this.amount = amount;
+        this.withoutHeads = true;
         reliefOK = true;
         System.out.println(getName() + " появились");
     }

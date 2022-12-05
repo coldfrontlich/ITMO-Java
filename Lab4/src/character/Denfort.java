@@ -26,6 +26,11 @@ public class Denfort extends Character{
         System.out.println(getName() + " закричал");
     }
 
+    public void shoutLoud(Ancient ancient) {
+        setShout(true);
+        System.out.println(getName() + " закричал вспомнив о барельефах " + ancient.getName());
+    }
+
     @Override
     public String toString() {
         return "Denfort{ " + "name = " + getName() +
