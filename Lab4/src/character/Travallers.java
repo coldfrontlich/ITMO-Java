@@ -5,6 +5,8 @@ import enums.LocationState;
 import enums.PhysicalState;
 import environment.Environment;
 import environment.WhiteSteam;
+import exceptions.ExamineRemainsException;
+import exceptions.FarewellException;
 import interfaces.Goodable;
 
 import java.util.Objects;
@@ -83,9 +85,11 @@ public class Travallers extends Character implements Goodable {
         System.out.println("Жалко оставлять " + character.getName() + " на верную смерть");
     }
 
-    public void examineRemains(Ancient ancient) {
+    public void examineRemains(Ancient ancient) throws ExamineRemainsException {
         if (ancient.isWithoutHeads() && ancient.getPhysical() == PhysicalState.DEAD) {
             System.out.println(getName() + " увидели изуродованные останки тел без голов");
+        } else {
+            throw new ExamineRemainsException("Исследуя останки путешественники могли найти только звездоголовых без головы");
         }
     }
 
@@ -94,9 +98,11 @@ public class Travallers extends Character implements Goodable {
     }
 
 
-    public void farewell() {
+    public void farewell() throws FarewellException {
         if (getLocation() == LocationState.PEAK) {
             System.out.println(getName() + " прощаются с городом");
+        } else {
+            throw new FarewellException("Путешественники не могут прощаться с городом не с вершины");
         }
     }
 

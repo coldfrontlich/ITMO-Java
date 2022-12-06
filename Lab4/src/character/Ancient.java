@@ -2,6 +2,7 @@ package character;
 
 import enums.LocationState;
 import enums.PhysicalState;
+import exceptions.AmountException;
 
 import java.util.Objects;
 
@@ -22,7 +23,10 @@ public class Ancient extends Character{
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(int amount) throws AmountException {
+        if (amount <= 1) {
+            throw new AmountException(amount);
+        }
         this.amount = amount;
     }
 
@@ -37,10 +41,9 @@ public class Ancient extends Character{
     public void setReliefOK(boolean reliefOK) {
         this.reliefOK = reliefOK;
     }
-    public Ancient( LocationState location, PhysicalState physical, int amount) {
+    public Ancient( LocationState location, PhysicalState physical, boolean withoutHeads) {
         super("Старцы", location, physical);
-        this.amount = amount;
-        this.withoutHeads = true;
+        this.amount = 4;
         reliefOK = true;
         System.out.println(getName() + " появились");
     }

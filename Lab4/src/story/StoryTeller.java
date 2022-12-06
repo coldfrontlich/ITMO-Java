@@ -6,6 +6,9 @@ import enums.ConditonState;
 import enums.LocationState;
 import enums.PhysicalState;
 import environment.*;
+import exceptions.AmountException;
+import exceptions.ExamineRemainsException;
+import exceptions.FarewellException;
 import interfaces.Evilable;
 import interfaces.Goodable;
 
@@ -25,7 +28,13 @@ public class StoryTeller {
         Denfort denfort = new Denfort(LocationState.DEFAULT, PhysicalState.ALIVE);
         WhiteSteam whiteSteam = new WhiteSteam();
         TrumpetSounds trumpetSounds = new TrumpetSounds();
-        Ancient ancients = new Ancient( LocationState.DEFAULT, PhysicalState.DEAD, 4);
+        Ancient ancients = new Ancient(LocationState.DEFAULT, PhysicalState.DEAD, false);
+        try {
+            ancients.setAmount(0);
+        } catch (AmountException e) {
+            e.printStackTrace();
+            ancients.setAmount(e.getAmount());
+        }
         Pursuer pursuer = new Pursuer( LocationState.DEFAULT, PhysicalState.ALIVE);
         NightmareCreatures nightmareCreatures = new NightmareCreatures(PhysicalState.ALIVE);
         System.out.println();
@@ -43,7 +52,13 @@ public class StoryTeller {
 
         travallers.look(ancients);
         penguins.click(LocationState.DEFAULT);
-        travallers.examineRemains(ancients);
+        try {
+            travallers.examineRemains(ancients);
+        } catch (ExamineRemainsException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
         denfort.shoutLoud(ancients);
         System.out.println();
 
@@ -163,7 +178,12 @@ public class StoryTeller {
         System.out.println();
 
         travallers.runThrough(LocationState.PEAK);
+        try {
         travallers.farewell();
+        } catch (FarewellException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
         System.out.println();
     }
 }
