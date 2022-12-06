@@ -28,7 +28,7 @@ public class StoryTeller {
         Denfort denfort = new Denfort(LocationState.DEFAULT, PhysicalState.ALIVE);
         WhiteSteam whiteSteam = new WhiteSteam();
         TrumpetSounds trumpetSounds = new TrumpetSounds();
-        Ancient ancients = new Ancient(LocationState.DEFAULT, PhysicalState.DEAD, false);
+        Ancient ancients = new Ancient(LocationState.DEFAULT, PhysicalState.DEAD, true);
         try {
             ancients.setAmount(0);
         } catch (AmountException e) {
@@ -56,7 +56,6 @@ public class StoryTeller {
             travallers.examineRemains(ancients);
         } catch (ExamineRemainsException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
 
         denfort.shoutLoud(ancients);
@@ -177,12 +176,11 @@ public class StoryTeller {
                 });
         System.out.println();
 
-        travallers.runThrough(LocationState.PEAK);
+        travallers.runThrough(LocationState.GALLERY);
         try {
         travallers.farewell();
         } catch (FarewellException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
         }
         System.out.println();
     }

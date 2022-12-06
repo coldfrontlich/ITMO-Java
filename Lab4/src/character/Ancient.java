@@ -56,6 +56,7 @@ public class Ancient extends Character{
                 "; physical state = " + getPhysical() +
                 "; condition state = " + getCondition() +
                 "; reliefOK = " + isReliefOK() +
+                "; amount = " + isReliefOK() +
                 " }";
     }
 
@@ -70,11 +71,12 @@ public class Ancient extends Character{
                 && (this.getLocation()).equals(ancient.getLocation())
                 && (this.getPhysical()).equals(ancient.getPhysical())
                 && (this.getCondition()).equals(ancient.getCondition())
-                && (this.isReliefOK() == (ancient.isReliefOK()));
+                && (this.isReliefOK() == (ancient.isReliefOK()))
+                && (this.getAmount() == (ancient.getAmount()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isReliefOK(), this.getCondition());
+        return Objects.hash(this.getName(), this.getPhysical(), this.getLocation(), this.isReliefOK(), this.getCondition(), this.getAmount());
     }
 }

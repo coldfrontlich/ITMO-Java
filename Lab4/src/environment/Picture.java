@@ -3,6 +3,8 @@ package environment;
 import character.Travallers;
 import character.Character;
 
+import java.util.Objects;
+
 public class Picture extends Environment{
 
     private String feelLike;
@@ -34,4 +36,30 @@ public class Picture extends Environment{
             System.out.println(getName() + getFeelLike() + " воспринимается" + character.getName());
         }
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.isExists(), this.getFeelLike());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Picture picture = (Picture) obj;
+        return (this.getName()).equals(picture.getName())
+                && ((this.isExists()) == (picture.isExists()))
+                && (this.getFeelLike()).equals(picture.getFeelLike());
+    }
+
+    @Override
+    public String toString() {
+        return "Picture{ " + "name = " + getName() +
+                "; Exists = " + isExists() +
+                "; feelLike = " + getFeelLike() +
+                " }";
+    }
+
 }

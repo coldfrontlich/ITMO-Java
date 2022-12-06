@@ -9,7 +9,7 @@ public class AmountException extends RuntimeException{
 
     public AmountException(int amount) {
         super("Нельзя установить количество меньше 2");
-        this.amount = 2;
+        this.amount = 4;
     }
 
 
