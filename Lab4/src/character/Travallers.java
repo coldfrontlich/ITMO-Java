@@ -33,6 +33,8 @@ public class Travallers extends Character implements Goodable {
             System.out.println(getName() + " пробегаем по галерее");
         } else if (getLocation() == LocationState.UNDERWATERWORLD) {
             System.out.println(getName() + " проплываем по подводному миру");
+        } else if (getLocation() == LocationState.PEAK) {
+            System.out.println(getName() + " карабкаются в сторону вершины");
         }
     }
 
@@ -91,12 +93,6 @@ public class Travallers extends Character implements Goodable {
         System.out.println(getName() + " карабкаются в сторону " + environment.getName());
     }
 
-    public void climb(LocationState location) {
-        if (location == LocationState.PEAK) {
-            System.out.println(getName() + " карабкаются в сторону вершины");
-            setLocation(LocationState.PEAK);
-        }
-    }
 
     public void farewell() {
         if (getLocation() == LocationState.PEAK) {

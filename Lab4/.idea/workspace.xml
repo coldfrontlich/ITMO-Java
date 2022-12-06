@@ -81,6 +81,9 @@
       <workItem from="1670234989236" duration="13020000" />
       <workItem from="1670255675534" duration="6163000" />
       <workItem from="1670273645331" duration="682000" />
+      <workItem from="1670318198483" duration="14000" />
+      <workItem from="1670321104385" duration="195000" />
+      <workItem from="1670350287334" duration="4113000" />
     </task>
     <servers />
   </component>
@@ -97,16 +100,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/story/StoryTeller.java</url>
-          <line>120</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

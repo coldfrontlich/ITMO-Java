@@ -50,27 +50,18 @@ public abstract class Character {
     }
 
 
-    public void changePhysicalState(PhysicalState condition) {
-        PhysicalState earlyCondition = this.getPhysical();
-        setPhysical(condition);
-        String characterName = this.getName();
-        if (condition == PhysicalState.ALIVE) {
-            System.out.println(characterName + (earlyCondition != PhysicalState.ALIVE ? " живой" : " живее всех живых"));
-        } else if (condition == PhysicalState.INJURED) {
-            System.out.println(characterName + (earlyCondition != PhysicalState.INJURED ? " ранен" : " сильно ранен"));
-        } else if (condition == PhysicalState.DEAD) {
-            System.out.println(characterName + (earlyCondition != PhysicalState.DEAD ? " погиб" : " всё ещё мертв"));
-        }
-    }
 
 
-    public void showCondition(ConditonState conditonState) {
-        if (conditonState == ConditonState.WITHOUTAGGRESSION) {
+
+    public void showConditionWithText() {
+        if (getCondition() == ConditonState.WITHOUTAGGRESSION) {
             System.out.println(getName() + " - без агрессии ");
-        } else if (conditonState == ConditonState.GOODINTENSIONS) {
+        } else if (getCondition() == ConditonState.GOODINTENSIONS) {
             System.out.println(getName() + " - с добрыми намерениями");
-        } else if (conditonState == ConditonState.CURIOSITY) {
+        } else if (getCondition() == ConditonState.CURIOSITY) {
             System.out.println(getName() + " - проявление любознательности");
+        } else if (getCondition() == ConditonState.SHOCK){
+            System.out.println(getName() + " - переходит в состояние шока");
         }
     }
 

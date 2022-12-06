@@ -41,7 +41,7 @@ public class SmellUnknownOrigin extends Environment {
 
     public void checkStanding() {
         if (isExists()) {
-            System.out.println("В возздухе висел " + getName());
+            System.out.println("В воздухе висел " + getName());
         }
     }
 }

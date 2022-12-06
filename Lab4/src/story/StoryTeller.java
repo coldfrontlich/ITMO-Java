@@ -70,8 +70,11 @@ public class StoryTeller {
         System.out.println();
 
         travallers.hope();
-        travallers.showCondition(ConditonState.WITHOUTAGGRESSION);
-        travallers.showCondition(ConditonState.GOODINTENSIONS);
+        travallers.setCondition(ConditonState.WITHOUTAGGRESSION);
+        travallers.showConditionWithText();
+        travallers.setCondition(ConditonState.GOODINTENSIONS);
+        travallers.showConditionWithText();
+
         travallers.makeGoodThings(pursuer);
         System.out.println();
 
@@ -105,10 +108,9 @@ public class StoryTeller {
         System.out.println();
 
         smellUnknownOrigin.checkStanding();
-        StoryTeller.evilness(new Evilable(){
-            public void makeBadThings(Character character){
-                System.out.println(character.getName() + " переходит в состояние шока");
-            }
+        StoryTeller.evilness(character -> {
+            character.setCondition(ConditonState.SHOCK);
+            character.showConditionWithText();
         }, denfort);
         System.out.println();
 
@@ -119,25 +121,48 @@ public class StoryTeller {
         System.out.println();
 
         daylight.influence(travallers);
-        travallers.look(new Character("несчастный Гедни", LocationState.DEFAULT, PhysicalState.DEAD)
+        travallers.look(new Character("несчастный Гедни", LocationState.DEFAULT, PhysicalState.ALIVE)
         {
+            {
+                sitOnsled();
+                perish(pursuer);
+            }
+            public void perish(Character character) {
+                setPhysical(PhysicalState.DEAD);
+                System.out.println(getName() + " погиб от рук " + character.getName());
+            }
 
+            public void sitOnsled() {
+                System.out.println(getName() + " сидит на санях");
+            }
         });
         class Dog extends Character {
             public Dog(String name, LocationState location, PhysicalState physical) {
                 super(name, location, physical);
             }
-        }
-        travallers.look(new Dog("Собака", LocationState.DEFAULT, PhysicalState.DEAD));
-        StoryTeller.goodness(new Goodable() {
-            public void makeGoodThings(Character character) {
-                System.out.println(character.getName() + " никогда не потревожит их");
+
+            {
+                guardSled();
+                setPhysical(PhysicalState.DEAD);
+                System.out.println(getName() + " погиб охраняя сани от руки " + pursuer.getName());
             }
-        }, new Character("Никто", LocationState.DEFAULT, PhysicalState.ALIVE) {
-        });
+
+            public void guardSled() {
+                System.out.println(getName() + " охраняет сани ");
+            }
+
+
+        }
+        travallers.look(new Dog("Собака", LocationState.DEFAULT, PhysicalState.ALIVE));
+        StoryTeller.goodness(character -> System.out.println(character.getName() + " никогда не потревожит "),
+                new Character("Никто", LocationState.DEFAULT, PhysicalState.ALIVE) {
+                    {
+                        System.out.println("Их мертвый сон");
+                    }
+                });
         System.out.println();
 
-        travallers.climb(LocationState.PEAK);
+        travallers.runThrough(LocationState.PEAK);
         travallers.farewell();
         System.out.println();
     }

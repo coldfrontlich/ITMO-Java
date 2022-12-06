@@ -34,7 +34,8 @@ public class Pursuer extends Character implements Evilable {
     }
 
     public void wounded() {
-        changePhysicalState(PhysicalState.INJURED);
+        setPhysical(PhysicalState.INJURED);
+        System.out.println(getName() + " ранен");
     }
 
     public void hearVoice(Character character) {
@@ -56,7 +57,7 @@ public class Pursuer extends Character implements Evilable {
             ancient.setReliefOK(false);
             System.out.println(getName() + " испоганил барельеф " + ancient.getName());
         } else {
-            character.changePhysicalState(PhysicalState.DEAD);
+            character.setPhysical(PhysicalState.DEAD);
             System.out.println(getName() + " догнал и убил " + character.getName());
         }
     }

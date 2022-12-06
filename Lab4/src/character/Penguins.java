@@ -17,19 +17,16 @@ public class Penguins extends Character implements Goodable {
     private void polish() {
         System.out.println(getName() + " отполировали пол до блеска");
     }
-    public class Nest {
-        public Nest(LocationState location) {
+    private class Nest {
+        public Nest(LocationState location, int amountOfPenguins) {
             this.location = location;
+            this.amountOfPenguins = amountOfPenguins;
         }
-        private LocationState location;
+        private final LocationState location;
 
-        public LocationState getLocation() {
-            return location;
-        }
+        private final int  amountOfPenguins;
 
-        public void setLocation(LocationState location) {
-            this.location = location;
-        }
+
     }
 
     public class Floor{
@@ -54,9 +51,9 @@ public class Penguins extends Character implements Goodable {
     }
 
     public void click(LocationState location){
-        Nest nest = new Nest(location);
-        if (nest.getLocation() == LocationState.DEFAULT) {
-            System.out.println(getName() + " щелкали клювами так как охраняли гнездо ");
+        Nest nest = new Nest(location, 9);
+        if (nest.location == LocationState.DEFAULT) {
+            System.out.println(getName() + " щелкали клювами так как охраняли гнездо c " + nest.amountOfPenguins + " пингвинами");
         }
     }
 }
