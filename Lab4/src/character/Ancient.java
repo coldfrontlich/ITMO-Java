@@ -44,6 +44,7 @@ public class Ancient extends Character{
     public Ancient( LocationState location, PhysicalState physical, boolean withoutHeads) {
         super("Старцы", location, physical);
         this.amount = 4;
+        this.withoutHeads = withoutHeads;
         reliefOK = true;
         System.out.println(getName() + " появились");
     }

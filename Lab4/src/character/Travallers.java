@@ -86,7 +86,7 @@ public class Travallers extends Character implements Goodable {
     }
 
     public void examineRemains(Ancient ancient) throws ExamineRemainsException {
-        if (ancient.isWithoutHeads() && ancient.getPhysical() == PhysicalState.DEAD) {
+        if (ancient.isWithoutHeads()) {
             System.out.println(getName() + " увидели изуродованные останки тел без голов");
         } else {
             throw new ExamineRemainsException("Исследуя останки путешественники могли найти только звездоголовых без головы");

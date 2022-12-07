@@ -30,7 +30,7 @@ public class StoryTeller {
         TrumpetSounds trumpetSounds = new TrumpetSounds();
         Ancient ancients = new Ancient(LocationState.DEFAULT, PhysicalState.DEAD, true);
         try {
-            ancients.setAmount(0);
+            ancients.setAmount(4);
         } catch (AmountException e) {
             e.printStackTrace();
             ancients.setAmount(e.getAmount());
@@ -176,7 +176,7 @@ public class StoryTeller {
                 });
         System.out.println();
 
-        travallers.runThrough(LocationState.GALLERY);
+        travallers.runThrough(LocationState.PEAK);
         try {
         travallers.farewell();
         } catch (FarewellException e) {
